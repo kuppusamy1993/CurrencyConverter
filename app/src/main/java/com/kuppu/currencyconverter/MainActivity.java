@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinner_list.add("Select Country");
+        spinner_list.add("Select Currency");
         getCurrencyList();
         spin_currency=findViewById(R.id.spinner_curr_value);
         amount_value_edit=findViewById(R.id.edit_amount);
@@ -205,7 +205,7 @@ private void CalculateExchange(int pos){
     float result=givenamt/currency_val;
     Log.e("MSg",String.valueOf(result));
 
-    Currency currency=null;
+    listdata.clear();
     for(int i=0;i<currencylist.size();i++){
         String s=currencylist.get(i).getAmount();
         String ccode=currencylist.get(i).getUSDCurrencyCode();
@@ -214,7 +214,7 @@ private void CalculateExchange(int pos){
         float res=result*exchangeval;
         Log.e("Calc",String.valueOf(res));
         String exchangedoutput=String.valueOf(res);
-        currency =new Currency();
+      Currency  currency =new Currency();
         currency.setAmount(exchangedoutput);
         currency.setCountry(countryvalue);
         currency.setUSDCurrencyCode(ccode);
@@ -222,14 +222,6 @@ private void CalculateExchange(int pos){
     }
 
 
-    Log.e("Mss",listdata.toString());
-
-    Log.e("Mss",listdata.get(5).getAmount());
-                            /*Currency currency1=new Currency();
-                               currency1.setCountry(countryvalue);
-                                currencylist.add(currency);
-                                currencylist.add(currency1);
-                            Log.e("Mss",currencylist.get(0).getAmount());*/
     recyclerviewAdapter.ExchangedCurrency(listdata);
 }
 
