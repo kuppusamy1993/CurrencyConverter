@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<androidx.cardview.widget.CardView
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+    <TextView
+        android:id="@+id/textViewTitle_currency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+        <TextView
+            android:layout_below="@+id/textViewTitle_currency"
+            android:id="@+id/textViewTitle_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+        <TextView
+            android:layout_below="@+id/textViewTitle_code"
+            android:id="@+id/textViewTitle_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+        <TextView
+            android:layout_below="@+id/textViewTitle_value"
+            android:id="@+id/textViewTitle_exchangedvalue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+</LinearLayout>
