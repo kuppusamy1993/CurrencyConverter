@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -57,9 +58,13 @@ public class MainActivity extends AppCompatActivity {
         spinner_list.add("USD-United States Dollar");
         getCurrencyList();
         spin_currency=findViewById(R.id.spinner_curr_value);
+
         amount_value_edit=findViewById(R.id.edit_amount);
+        amount_value_edit.setSelection(amount_value_edit.getText().length());
+
         recyclerView=findViewById(R.id.recyclerview_currencylist);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
         progressDialog=new ProgressDialog(this);
@@ -68,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.show();
 getCurrencyValues();
 
+        amount_value_edit.setFocusable(true);
+        amount_value_edit.setFocusableInTouchMode(true);
+        if(amount_value_edit.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
 
 Log.e("Size",spinner_list.toString());
         Spinner spinner=new Spinner(this,Spinner.MODE_DIALOG);
@@ -79,7 +89,7 @@ Log.e("Size",spinner_list.toString());
         recyclerviewAdapter=new RecyclerviewAdapter(getApplicationContext(),currencylist);
         recyclerView.setAdapter(recyclerviewAdapter);
         recyclerviewAdapter.notifyDataSetChanged();
-
+recyclerView.smoothScrollToPosition(0);
         spin_currency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
