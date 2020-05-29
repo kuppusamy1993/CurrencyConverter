@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="#F0EEEE"
+    android:layout_margin="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
 <androidx.cardview.widget.CardView
-    android:layout_margin="5dp"
+    android:layout_margin="3dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
+        android:layout_marginLeft="7dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:textSize="18dp"
+                android:id="@+id/textViewTitle_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="dadajajacdaa"
+                android:textColor="#000000" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:text="45.67"
+            android:id="@+id/textViewTitle_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#000000" />
     <TextView
+        android:layout_below="@+id/textViewTitle_code"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
         android:id="@+id/textViewTitle_currency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:textAlignment="center"
+        android:layout_marginBottom="5dp"
+        android:text="united"
         android:textColor="#000000" />
 
-        <TextView
-            android:layout_below="@+id/textViewTitle_currency"
-            android:id="@+id/textViewTitle_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textAlignment="center"
-            android:textColor="#000000" />
-        <TextView
-            android:layout_below="@+id/textViewTitle_code"
-            android:id="@+id/textViewTitle_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textAlignment="center"
-            android:textColor="#000000" />
-        <TextView
-            android:layout_below="@+id/textViewTitle_value"
-            android:id="@+id/textViewTitle_exchangedvalue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textAlignment="center"
-            android:textColor="#000000" />
+
+
     </RelativeLayout>
+
 </androidx.cardview.widget.CardView>
-</LinearLayout>
+</RelativeLayout>

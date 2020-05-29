@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,16 +52,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_maintwo);
 
-        spinner_list.add("Select Currency");
+        spinner_list.add("USD-United States Dollar");
         getCurrencyList();
         spin_currency=findViewById(R.id.spinner_curr_value);
         amount_value_edit=findViewById(R.id.edit_amount);
         recyclerView=findViewById(R.id.recyclerview_currencylist);
-
-
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         progressDialog=new ProgressDialog(this);
@@ -71,11 +70,11 @@ getCurrencyValues();
 
 
 Log.e("Size",spinner_list.toString());
-
+        Spinner spinner=new Spinner(this,Spinner.MODE_DIALOG);
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.spinner_item,spinner_list);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin_currency.setAdapter(adapter);
+       spin_currency.setAdapter(adapter);
 
         recyclerviewAdapter=new RecyclerviewAdapter(getApplicationContext(),currencylist);
         recyclerView.setAdapter(recyclerviewAdapter);
@@ -128,7 +127,7 @@ Log.e("Size",spinner_list.toString());
 
                         String values=object.get(key).toString();
 
-                        spinner_list.add(values);
+                        spinner_list.add(key+"-"+values);
                         Country country=new Country();
                         country.setCurrencyCode(key);
                         country.setCurrencyname(values);

@@ -42,9 +42,11 @@ private List<Currency>currencyList;
 
 
         holder.currency_title.setText(country.getCurrencyname());
-        holder.country_code.setText("Country Code::"+currency.getUSDCurrencyCode());
-        holder.amount.setText(currency.getAmount());
-        holder.exchangedamount.setText(currency.getCovetCurrRate());
+        holder.country_code.setText(currency.getUSDCurrencyCode());
+        Double amt=Double.parseDouble(currency.getAmount());
+        Log.e("Dcs",String.valueOf(amt));
+        holder.amount.setText(String.valueOf(amt));
+
 
     }
 
@@ -70,7 +72,6 @@ notifyDataSetChanged();
             country_code=itemView.findViewById(R.id.textViewTitle_code);
 
             amount=itemView.findViewById(R.id.textViewTitle_value);
-            exchangedamount=itemView.findViewById(R.id.textViewTitle_exchangedvalue);
 
 
         }

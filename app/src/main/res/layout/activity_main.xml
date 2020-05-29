@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="beforeDescendants"
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
 
 
 <LinearLayout
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="beforeDescendants"
 android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -30,7 +35,7 @@ android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Spinner
-
+        android:spinnerMode="dialog"
         android:layout_below="@+id/edit_amount"
         android:layout_marginTop="10dp"
         android:id="@+id/spinner_curr_value"
