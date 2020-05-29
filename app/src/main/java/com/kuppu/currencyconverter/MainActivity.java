@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     String user_entered_amount;
     List<Currency>listdata=new ArrayList<>();
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +62,16 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setCancelable(true);
+        progressDialog.setMessage("Loading");
+        progressDialog.show();
 getCurrencyValues();
 
 
 Log.e("Size",spinner_list.toString());
 
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,spinner_list);
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.spinner_item,spinner_list);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin_currency.setAdapter(adapter);
@@ -156,7 +160,9 @@ Log.e("Size",spinner_list.toString());
                 Log.e("mycurrency",response.toString());
                 try {
                     JSONObject object=response.getJSONObject("quotes");
+
                     Iterator<?> itr=object.keys();
+                    progressDialog.dismiss();
                     while (itr.hasNext()) {
                         String key = (String) itr.next();
 
@@ -195,15 +201,17 @@ Log.e("Size",spinner_list.toString());
 
     }
 private void CalculateExchange(int pos){
+
     user_entered_amount = amount_value_edit.getText().toString();
 
-    String countrycode = currencylist.get(pos).getUSDCurrencyCode();
-    String amount = currencylist.get(pos).getAmount();
+    String countrycode = currencylist.get(pos-1).getUSDCurrencyCode();
+    String amount = currencylist.get(pos-1).getAmount();
 
-    int givenamt=Integer.parseInt(user_entered_amount.trim());
+    float givenamt=Float.parseFloat(user_entered_amount.trim());
     float currency_val=Float.parseFloat(amount);
+    Log.e("Print",String.valueOf(givenamt)+",,"+String.valueOf(currency_val)+countrycode);
     float result=givenamt/currency_val;
-    Log.e("MSg",String.valueOf(result));
+    Log.e("print",String.valueOf(result));
 
     listdata.clear();
     for(int i=0;i<currencylist.size();i++){

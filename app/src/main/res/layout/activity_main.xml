@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 <LinearLayout
     android:id="@+id/top_edittext_panel"
@@ -14,11 +17,14 @@
     <EditText
         android:layout_marginTop="10dp"
         android:id="@+id/edit_amount"
+        android:textColor="@android:color/white"
         android:inputType="number"
         android:hint="Enter amount"
+        android:textColorHint="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Spinner
+
         android:layout_marginTop="10dp"
         android:id="@+id/spinner_curr_value"
         android:layout_width="match_parent"
