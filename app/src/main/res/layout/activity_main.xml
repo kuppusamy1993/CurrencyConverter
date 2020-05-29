@@ -4,18 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="false"
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
+
+
+
 <LinearLayout
-    android:id="@+id/top_edittext_panel"
-    android:padding="10dp"
-    android:orientation="vertical"
+android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
-        android:layout_marginTop="10dp"
+
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants"
+        android:layout_marginTop="30dp"
         android:id="@+id/edit_amount"
         android:textColor="@android:color/white"
         android:inputType="number"
@@ -25,17 +31,27 @@
         android:layout_height="wrap_content"/>
     <Spinner
 
+        android:layout_below="@+id/edit_amount"
         android:layout_marginTop="10dp"
         android:id="@+id/spinner_curr_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 <androidx.recyclerview.widget.RecyclerView
-    android:layout_marginTop="10dp"
+    android:layout_below="@id/spinner_curr_value"
+        android:layout_marginTop="10dp"
+    android:descendantFocusability="beforeDescendants"
+    android:scrollbars="vertical"
     android:id="@+id/recyclerview_currencylist"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="wrap_content"/>
 </LinearLayout>
+</LinearLayout>
+
 </RelativeLayout>
+
+

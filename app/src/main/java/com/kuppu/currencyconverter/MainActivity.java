@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         amount_value_edit=findViewById(R.id.edit_amount);
         recyclerView=findViewById(R.id.recyclerview_currencylist);
 
+
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -78,7 +79,7 @@ Log.e("Size",spinner_list.toString());
 
         recyclerviewAdapter=new RecyclerviewAdapter(getApplicationContext(),currencylist);
         recyclerView.setAdapter(recyclerviewAdapter);
-
+        recyclerviewAdapter.notifyDataSetChanged();
 
         spin_currency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
